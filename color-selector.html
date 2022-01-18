@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex10</title>
+    <link rel="stylesheet" href="./bootstrap-4.6.1-dist/css/bootstrap.min.css">
+  </head>
+  <style>
+    .color-demo-area {
+      height: 400px;
+      background-color: #777;
+      font-size: 60px;
+      line-height: 400px;
+      text-align: center;
+      color: rgba(0,0,0,0.3);
+    }
+
+    .color-select-area {
+      height: 400px;
+      background-color: #eee;
+      overflow-y: scroll;
+    }
+    .color-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+    .btn.btn-primary{
+      font-size: 1.5rem;
+      width: 100px;
+      height: 50px;
+      line-height:30px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    /* .color-circle:nth-child(1) {
+      background-color: lightskyblue;
+    }
+
+    .color-circle:nth-child(2) {
+      background-color: lightsalmon;
+    } */
+    
+  </style>
+  <body>
+    <h1 style="text-align: center; color: red;">Pick one color from the right side</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="color-demo-area">Show the color</div>
+        </div>
+        <div class="col-6">
+          <div class="color-select-area d-flex flex-wrap">
+            <!-- <div class="color-circle"></div>
+            <div class="color-circle"></div> -->
+          </div>
+        </div>
+      </div>
+      <div class="btn btn-primary">Reset</div>
+    </div>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let temp = '<div class="color-circle"></div>';
+      
+      for(let i=0;i<360;i++){
+        $('.color-select-area').append(temp)
+        
+        $(`.color-circle:nth-child(${i+1})`).css('background',`hsl(${i}, 100%, 50%)`);
+      }
+      
+      $('.btn.btn-primary').click(function(){
+        $('.color-demo-area').text('Show the color');
+        $('.color-demo-area').css('background-color','rgba(0,0,0,0.3)');
+      })
+      $('.color-circle').click(function(){
+        $('.color-demo-area').text('');
+        // console.log( $(this).css('background-color') );
+        $(".color-demo-area").css('background', $(this).css('background-color'));
+      })
+    </script>
+  </body>
+</html>
